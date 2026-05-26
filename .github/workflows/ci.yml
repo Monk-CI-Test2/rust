@@ -93,6 +93,9 @@ jobs:
         run: |
           cd src/ci/citool
           CARGO_INCREMENTAL=0 CARGO_TARGET_DIR=../../../build/citool cargo build
+      - name: lowercase repo name
+        run: echo "GITHUB_REPOSITORY=${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+
       - name: run the build
         run: |
           set +e
